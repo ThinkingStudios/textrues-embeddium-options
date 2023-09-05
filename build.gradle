@@ -57,7 +57,7 @@ java {
 }
 
 jar {
-    from "LICENSE.txt"
+    from "LICENSE"
 }
 
 
