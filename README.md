@@ -1,4 +1,4 @@
-# Reese's Sodium Options
+# TexTrue's Embeddium Options
 ![Java 16](https://img.shields.io/badge/language-Java%2016-9b599a.svg?style=flat-square)
 [![Project License](https://img.shields.io/github/license/FlashyReese/reeses-sodium-options?style=flat-square)](LICENSE.txt)
 ![Environment: Client](https://img.shields.io/badge/environment-client-1976d2?style=flat-square)
@@ -7,7 +7,7 @@
 [![CurseForge](http://cf.way2muchnoise.eu/title/511319.svg)](https://www.curseforge.com/minecraft/mc-mods/reeses-sodium-options)
 [![Support Server](https://img.shields.io/discord/748363294749753484.svg?color=7289da&label=FlashyReese&logo=discord&style=flat-square)](https://discord.gg/MPHVG6MH4e)
 
-Reese's Edition of Sodium Options
+Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge.
 
 ## Building from source
 
