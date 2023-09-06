@@ -10,9 +10,6 @@ import me.jellysquid.mods.sodium.client.util.Dim2i;
 import net.minecraft.SharedConstants;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
-import net.minecraft.client.gui.ScreenRect;
-import net.minecraft.client.gui.navigation.GuiNavigation;
-import net.minecraft.client.gui.navigation.GuiNavigationPath;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.OrderedText;
@@ -20,7 +17,6 @@ import net.minecraft.text.Style;
 import net.minecraft.text.Text;
 import net.minecraft.util.Util;
 import net.minecraft.util.math.MathHelper;
-import org.jetbrains.annotations.Nullable;
 import org.lwjgl.glfw.GLFW;
 
 import java.util.List;
@@ -50,6 +46,7 @@ public class SearchTextFieldComponent extends AbstractWidget {
     private int firstCharacterIndex;
     private int selectionStart;
     private int selectionEnd;
+    private boolean focused;
     private int lastCursorPosition = this.getCursor();
 
     public SearchTextFieldComponent(Dim2i dim, List<OptionPage> pages, AtomicReference<Text> tabFrameSelectedTab, AtomicReference<Integer> tabFrameScrollBarOffset, AtomicReference<Integer> optionPageScrollBarOffset, int tabDimHeight, SodiumVideoOptionsScreen sodiumVideoOptionsScreen, AtomicReference<String> lastSearch, AtomicReference<Integer> lastSearchIndex) {
@@ -65,6 +62,14 @@ public class SearchTextFieldComponent extends AbstractWidget {
         if (!lastSearch.get().trim().isEmpty()) {
             this.write(lastSearch.get());
         }
+    }
+
+    public boolean isFocused() {
+        return focused;
+    }
+
+    public void setFocused(boolean focused) {
+        this.focused = focused;
     }
 
     @Override
@@ -498,17 +503,5 @@ public class SearchTextFieldComponent extends AbstractWidget {
 
     public int getInnerWidth() {
         return this.dim.width() - 12;
-    }
-
-    @Override
-    public @Nullable GuiNavigationPath getNavigationPath(GuiNavigation navigation) {
-        if (!this.visible)
-            return null;
-        return super.getNavigationPath(navigation);
-    }
-
-    @Override
-    public ScreenRect getNavigationFocus() {
-        return new ScreenRect(this.dim.x(), this.dim.y(), this.dim.width(), this.dim.height());
     }
 }

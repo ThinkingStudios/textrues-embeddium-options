@@ -6,10 +6,7 @@ import me.jellysquid.mods.sodium.client.gui.options.control.ControlElement;
 import me.jellysquid.mods.sodium.client.gui.options.control.ControlValueFormatter;
 import me.jellysquid.mods.sodium.client.util.Dim2i;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.util.InputUtil;
-import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.client.util.math.Rect2i;
-import net.minecraft.util.math.MathHelper;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -85,42 +82,6 @@ public abstract class MixinSliderControlElement extends ControlElement<Integer> 
         } else {
             return false;
         }
-    }
-
-    @Inject(method = "renderSlider", at = @At(value = "TAIL"))
-    public void rso$renderSlider(MatrixStack matrixStack, CallbackInfo ci) {
-        int sliderX = this.sliderBounds.getX();
-        int sliderY = this.sliderBounds.getY();
-        int sliderWidth = this.sliderBounds.getWidth();
-        int sliderHeight = this.sliderBounds.getHeight();
-        this.thumbPosition = this.getThumbPositionForValue(this.option.getValue());
-        double thumbOffset = MathHelper.clamp((double) (this.getIntValue() - this.min) / (double) this.range * (double) sliderWidth, 0.0, sliderWidth);
-        double thumbX = (double) sliderX + thumbOffset - 2.0;
-        if (this.isFocused() && this.isEditMode()) {
-            this.drawRect(thumbX - 1, sliderY - 1, thumbX + 5, sliderY + sliderHeight + 1, 0xFFFFFFFF);
-        }
-    }
-
-    @Override
-    public boolean keyPressed(int keyCode, int scanCode, int modifiers) {
-        if (!isFocused()) return false;
-
-        if (keyCode == InputUtil.GLFW_KEY_ENTER) {
-            this.setEditMode(!this.isEditMode());;
-            return true;
-        }
-
-        if (this.isEditMode()) {
-            if (keyCode == InputUtil.GLFW_KEY_LEFT) {
-                this.option.setValue(MathHelper.clamp(this.option.getValue() - interval, min, max));
-                return true;
-            } else if (keyCode == InputUtil.GLFW_KEY_RIGHT) {
-                this.option.setValue(MathHelper.clamp(this.option.getValue() + interval, min, max));
-                return true;
-            }
-        }
-
-        return false;
     }
 
     private void setValueFromMouseScroll(double amount) {
