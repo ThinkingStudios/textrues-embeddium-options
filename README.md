@@ -1,10 +1,13 @@
 # TexTrue's Embeddium Options
 
-![Java 17](https://img.shields.io/badge/language-Java%2017-9b599a.svg?style=flat-square)
 [![Project License](https://img.shields.io/github/license/FlashyReese/reeses-sodium-options?style=flat-square)](LICENSE)
 ![Environment: Client](https://img.shields.io/badge/environment-client-1976d2?style=flat-square)
 
 Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge.
+
+<img alt="java17" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/java17_vector.svg">
+
+<img alt="forge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg">
 
 ## Building from source
 
