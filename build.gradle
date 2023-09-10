@@ -1,7 +1,8 @@
 plugins {
     id 'dev.architectury.loom' version '1.3-SNAPSHOT'
     id 'maven-publish'
-    id 'signing'
+    id 'net.darkhax.curseforgegradle' version '1.+'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
@@ -60,6 +61,37 @@ jar {
     from "LICENSE"
 }
 
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+
+    projectId = "textrues-rubidium-options"
+    versionNumber = "${project.version}"
+    versionType = "beta"
+    uploadFile = remapJar
+    additionalFiles = [sourcesJar]
+    gameVersions = ["1.20", "1.20.1"]
+    loaders = ["forge", "neoforge"]
+    dependencies {
+        required.project "embeddium", "0.7.0"
+    }
+}
+
+task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    disableVersionDetection()
+
+    def mainFile = upload(910506, remapJar)
+    mainFile.displayName = "${project.version}"
+    mainFile.releaseType = "beta"
+    mainFile.changelog = file("changelog.md")
+    mainFile.changelogType = "markdown"
+    mainFile.addModLoader("Forge", "NeoForge")
+    mainFile.addJavaVersion("Java 17", "Java 18")
+    mainFile.addGameVersion("1.20", "1.20.1")
+    mainFile.addRequirement("embeddium")
+
+    def sourcesFile = mainFile.withAdditionalFile(sourcesJar)
+}
 
 // configure the maven publication
 publishing {
