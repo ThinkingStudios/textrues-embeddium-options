@@ -1,16 +1,23 @@
 plugins {
-    id 'org.ajoberstar.grgit' version '5.0.0'
-    id 'fabric-loom' version '1.3-SNAPSHOT'
+    id 'dev.architectury.loom' version '1.3-SNAPSHOT'
     id 'maven-publish'
-    id 'signing'
+    id 'net.darkhax.curseforgegradle' version '1.+'
+    id "com.modrinth.minotaur" version "2.+"
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
+sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
 archivesBaseName = project.archives_base_name
-version = "${project.mod_version}${getVersionType(project.version_type, project.revision)}+mc${project.minecraft_version}-${getVersionMetadata()}"
+version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
+
+loom {
+    forge {
+        mixinConfigs = [
+                "reeses-sodium-options.mixins.json"
+        ]
+    }
+}
 
 repositories {
     maven {
@@ -20,32 +27,21 @@ repositories {
             includeGroup "maven.modrinth"
         }
     }
-    maven {
-        url "https://maven.flashyreese.me/releases"
-    }
-    maven {
-        url "https://maven.flashyreese.me/snapshots"
-    }
 }
 
 dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-    modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    forge "net.minecraftforge:forge:${project.forge_version}"
 
-    //modImplementation "me.jellysquid.mods:sodium-fabric:0.5.0-rc1+git.ddd735e"
-    modImplementation "maven.modrinth:sodium:${project.sodium_version}"
-    //modImplementation "maven.modrinth:iris:${project.iris_version}"
-
-    //modRuntimeOnly "maven.modrinth:lazydfu:0.1.3"
+    modImplementation "maven.modrinth:embeddium:${project.sodium_version}"
 }
 
 processResources {
     inputs.property "version", project.version
 
-    filesMatching("fabric.mod.json") {
+    filesMatching("META-INF/mods.toml") {
         expand "version": project.version
     }
 }
@@ -55,16 +51,45 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 java {
-    // Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
-    // if it is present.
-    // If you remove this line, sources will not be generated.
     withSourcesJar()
 }
 
 jar {
-    from "LICENSE.txt"
+    from "LICENSE"
 }
 
+modrinth {
+    token = System.getenv("MODRINTH_TOKEN")
+
+    projectId = "textrues-embeddium-options"
+    versionNumber = "${project.version}"
+    versionType = "beta"
+    changelog = file("changelog.md").getText('UTF-8')
+    uploadFile = remapJar
+    additionalFiles = [sourcesJar]
+    gameVersions = ["1.20.2"]
+    loaders = ["forge", "neoforge"]
+    dependencies {
+        required.project "embeddium"
+    }
+}
+
+task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge) {
+    apiToken = System.getenv("CURSEFORGE_TOKEN")
+    disableVersionDetection()
+
+    def mainFile = upload(910506, remapJar)
+    mainFile.displayName = "${project.version}"
+    mainFile.releaseType = "beta"
+    mainFile.changelog = file("changelog.md")
+    mainFile.changelogType = "markdown"
+    mainFile.addModLoader("Forge", "NeoForge")
+    mainFile.addJavaVersion("Java 17", "Java 18")
+    mainFile.addGameVersion("1.20.2")
+    mainFile.addRequirement("embeddium")
+
+    def sourcesFile = mainFile.withAdditionalFile(sourcesJar)
+}
 
 // configure the maven publication
 publishing {
