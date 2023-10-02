@@ -102,54 +102,5 @@ publishing {
     // select the repositories you want to publish to
     repositories {
         // uncomment to publish to the local maven
-        maven {
-            name = "FlashyReeseReleases"
-            url = "https://maven.flashyreese.me/releases"
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
-        }
-        maven {
-            name = "FlashyReeseSnapshots"
-            url = "https://maven.flashyreese.me/snapshots"
-            credentials {
-                username = System.getenv("MAVEN_USERNAME")
-                password = System.getenv("MAVEN_PASSWORD")
-            }
-        }
     }
-}
-
-def getVersionMetadata() {
-    def build_id = System.getenv("GITHUB_RUN_NUMBER")
-
-    // CI builds only
-    if (build_id != null) {
-        return "build.${build_id}"
-    }
-
-    if (grgit != null) {
-        def head = grgit.head()
-        def id = head.abbreviatedId
-
-        // Flag the build if the build tree is not clean
-        if (!grgit.status().clean) {
-            id += "-dirty"
-        }
-
-        return "rev.${id}"
-    }
-
-    // No tracking information could be found about the build
-    return "unknown"
-}
-
-static def getVersionType(String version_type, String revision) {
-    version_type = version_type.trim().toLowerCase()
-    revision = revision.trim().toLowerCase()
-    if (version_type != "release") {
-        return "-${version_type}${revision}"
-    }
-    return ""
 }
