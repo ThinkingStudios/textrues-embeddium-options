@@ -63,8 +63,7 @@ public abstract class MixinSliderControlElement extends ControlElement<Integer> 
     @Shadow
     public abstract int getIntValue();
 
-    @Shadow
-    public abstract void setValue(double d);
+    @Shadow public abstract void setValue(double d);
 
     @Inject(method = "<init>", at = @At(value = "TAIL"))
     public void postInit(Option<Integer> option, Dim2i dim, int min, int max, int interval, ControlValueFormatter formatter, CallbackInfo ci) {
