@@ -9,8 +9,6 @@
 
 Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge.
 
-<img alt="java17" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/built-with/java17_vector.svg">
-
 <img alt="forge" height="56" src="https://cdn.jsdelivr.net/npm/@intergrav/devins-badges@3/assets/cozy/supported/forge_vector.svg">
 
 </div></center>
