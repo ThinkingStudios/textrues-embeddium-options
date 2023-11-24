@@ -1,2 +1,3 @@
 ## Change
-- update to 1.20.2
+- sync RSO 0.7.0
+- rework icon by @KrLite

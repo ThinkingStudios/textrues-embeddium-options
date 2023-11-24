@@ -18,7 +18,7 @@ Replaces Embeddium Options Screen.
 
 [[mods]]
 modId = "reeses_sodium_options"
-version = "1.0.3"
+version = "1.0.4"
 displayName = "TexTrue's Rubidium Options (TexTrue's Embeddium Options)"
 description = '''
 Stub, to allow mods detecting TexTrue's Rubidium Options to function as expected.
@@ -34,7 +34,7 @@ side = "BOTH"
 [[dependencies.textrues_embeddium_options]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.20,)"
+versionRange = "[1.20.2,)"
 ordering = "NONE"
 side = "BOTH"
 
