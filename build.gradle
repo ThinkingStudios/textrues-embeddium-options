@@ -1,5 +1,5 @@
 plugins {
-    id 'dev.architectury.loom' version '1.3-SNAPSHOT'
+    id 'dev.architectury.loom' version '1.4-SNAPSHOT'
     id 'maven-publish'
     id 'net.darkhax.curseforgegradle' version '1.+'
     id "com.modrinth.minotaur" version "2.+"
@@ -7,19 +7,12 @@ plugins {
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_17
 
-archivesBaseName = project.archives_base_name
+base.archivesName = "${project.archives_base_name}-neoforge"
 version = "${project.mod_version}+mc${project.minecraft_version}"
 group = project.maven_group
 
-loom {
-    forge {
-        mixinConfigs = [
-                "reeses-sodium-options.mixins.json"
-        ]
-    }
-}
-
 repositories {
+    maven { url "https://maven.neoforged.net/releases" }
     maven {
         name = "Modrinth"
         url = "https://api.modrinth.com/maven"
@@ -33,7 +26,7 @@ dependencies {
     //to change the versions see the gradle.properties file
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-    forge "net.minecraftforge:forge:${project.forge_version}"
+    neoForge "net.neoforged:neoforge:${project.neoforge_version}"
 
     modImplementation "maven.modrinth:embeddium:${project.sodium_version}"
 }
@@ -68,7 +61,7 @@ modrinth {
     uploadFile = remapJar
     additionalFiles = [sourcesJar]
     gameVersions = ["1.20.2"]
-    loaders = ["forge"]
+    loaders = ["neoforge"]
     dependencies {
         required.project "embeddium"
     }
@@ -83,7 +76,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     mainFile.releaseType = "beta"
     mainFile.changelog = file("changelog.md")
     mainFile.changelogType = "markdown"
-    mainFile.addModLoader("Forge")
+    mainFile.addModLoader("NeoForge")
     mainFile.addJavaVersion("Java 17", "Java 18")
     mainFile.addGameVersion("1.20.2")
     mainFile.addRequirement("embeddium")
