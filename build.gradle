@@ -68,7 +68,7 @@ modrinth {
     uploadFile = remapJar
     additionalFiles = [sourcesJar]
     gameVersions = ["1.20.2"]
-    loaders = ["forge", "neoforge"]
+    loaders = ["forge"]
     dependencies {
         required.project "embeddium"
     }
@@ -83,7 +83,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     mainFile.releaseType = "beta"
     mainFile.changelog = file("changelog.md")
     mainFile.changelogType = "markdown"
-    mainFile.addModLoader("Forge", "NeoForge")
+    mainFile.addModLoader("Forge")
     mainFile.addJavaVersion("Java 17", "Java 18")
     mainFile.addGameVersion("1.20.2")
     mainFile.addRequirement("embeddium")
