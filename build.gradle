@@ -54,7 +54,7 @@ jar {
 modrinth {
     token = System.getenv("MODRINTH_TOKEN")
 
-    projectId = "textrues-embeddium-options"
+    projectId = "${project.modrinth_id}"
     versionNumber = "${project.version}"
     versionType = "beta"
     changelog = file("changelog.md").getText('UTF-8')
@@ -71,7 +71,7 @@ task publishCurseForge(type: net.darkhax.curseforgegradle.TaskPublishCurseForge)
     apiToken = System.getenv("CURSEFORGE_TOKEN")
     disableVersionDetection()
 
-    def mainFile = upload(910506, remapJar)
+    def mainFile = upload(project.curseforge_id, remapJar)
     mainFile.displayName = "${project.version}"
     mainFile.releaseType = "beta"
     mainFile.changelog = file("changelog.md")
