@@ -4,7 +4,6 @@ import me.jellysquid.mods.sodium.client.gui.widgets.AbstractWidget;
 import me.jellysquid.mods.sodium.client.util.Dim2i;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.ScreenRect;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.util.InputUtil;
 import net.minecraft.util.math.MathHelper;
 
@@ -160,26 +159,6 @@ public class ScrollBarComponent extends AbstractWidget {
         }
 
         return false;
-    }
-
-    @Override
-    public void setFocused(boolean focused) {
-
-    }
-
-    @Override
-    public boolean isFocused() {
-        return false;
-    }
-
-    @Override
-    public SelectionType getType() {
-        return null;
-    }
-
-    @Override
-    public void appendNarrations(NarrationMessageBuilder builder) {
-
     }
 
     public enum Mode {

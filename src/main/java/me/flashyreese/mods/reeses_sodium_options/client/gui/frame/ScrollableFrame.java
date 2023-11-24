@@ -7,7 +7,6 @@ import me.jellysquid.mods.sodium.client.util.Dim2i;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.navigation.GuiNavigation;
 import net.minecraft.client.gui.navigation.GuiNavigationPath;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import org.jetbrains.annotations.Nullable;
 
 import java.util.concurrent.atomic.AtomicReference;
@@ -175,16 +174,6 @@ public class ScrollableFrame extends AbstractFrame {
     }
     public boolean mouseScrolled(double mouseX, double mouseY, double horizontalAmount, double verticalAmount) {
         return super.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount) || (this.canScrollHorizontal && this.horizontalScrollBar.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount)) || (this.canScrollVertical && this.verticalScrollBar.mouseScrolled(mouseX, mouseY, horizontalAmount, verticalAmount));
-    }
-
-    @Override
-    public void appendNarrations(NarrationMessageBuilder builder) {
-
-    }
-
-    @Override
-    public SelectionType getType() {
-        return null;
     }
 
     public static class Builder {

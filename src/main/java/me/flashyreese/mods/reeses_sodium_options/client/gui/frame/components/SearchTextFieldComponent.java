@@ -15,7 +15,6 @@ import net.minecraft.client.gui.ScreenRect;
 import net.minecraft.client.gui.navigation.GuiNavigation;
 import net.minecraft.client.gui.navigation.GuiNavigationPath;
 import net.minecraft.client.gui.screen.Screen;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.client.render.RenderLayer;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Style;
@@ -143,11 +142,6 @@ public class SearchTextFieldComponent extends AbstractWidget {
     @Override
     public void setFocused(boolean focused) {
         this.focused = focused;
-    }
-
-    @Override
-    public boolean isFocused() {
-        return false;
     }
 
     private void drawSelectionHighlight(DrawContext context, int x1, int y1, int x2, int y2) {
@@ -523,15 +517,5 @@ public class SearchTextFieldComponent extends AbstractWidget {
     @Override
     public ScreenRect getNavigationFocus() {
         return new ScreenRect(this.dim.x(), this.dim.y(), this.dim.width(), this.dim.height());
-    }
-
-    @Override
-    public SelectionType getType() {
-        return null;
-    }
-
-    @Override
-    public void appendNarrations(NarrationMessageBuilder builder) {
-
     }
 }

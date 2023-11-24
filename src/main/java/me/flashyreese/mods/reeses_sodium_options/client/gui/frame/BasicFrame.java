@@ -3,7 +3,6 @@ package me.flashyreese.mods.reeses_sodium_options.client.gui.frame;
 import me.jellysquid.mods.sodium.client.gui.widgets.AbstractWidget;
 import me.jellysquid.mods.sodium.client.util.Dim2i;
 import net.minecraft.client.gui.DrawContext;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import org.apache.commons.lang3.Validate;
 
 import java.util.ArrayList;
@@ -38,16 +37,6 @@ public class BasicFrame extends AbstractFrame {
     @Override
     public void render(DrawContext drawContext, int mouseX, int mouseY, float delta) {
         super.render(drawContext, mouseX, mouseY, delta);
-    }
-
-    @Override
-    public void appendNarrations(NarrationMessageBuilder builder) {
-
-    }
-
-    @Override
-    public SelectionType getType() {
-        return null;
     }
 
     public static class Builder {

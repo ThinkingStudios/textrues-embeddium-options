@@ -14,7 +14,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.navigation.GuiNavigation;
 import net.minecraft.client.gui.navigation.GuiNavigationPath;
-import net.minecraft.client.gui.screen.narration.NarrationMessageBuilder;
 import net.minecraft.text.OrderedText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
@@ -172,16 +171,6 @@ public class OptionPageFrame extends AbstractFrame {
     @Override
     public @Nullable GuiNavigationPath getNavigationPath(GuiNavigation navigation) {
         return super.getNavigationPath(navigation);
-    }
-
-    @Override
-    public void appendNarrations(NarrationMessageBuilder builder) {
-
-    }
-
-    @Override
-    public SelectionType getType() {
-        return null;
     }
 
     public static class Builder {
