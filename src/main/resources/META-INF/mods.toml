@@ -16,8 +16,6 @@ Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge
 Replaces Embeddium Options Screen.
 '''
 
-
-
 [[mixins]]
 config = "reeses-sodium-options.mixins.json"
 
