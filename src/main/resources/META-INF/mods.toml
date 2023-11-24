@@ -16,13 +16,7 @@ Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge
 Replaces Embeddium Options Screen.
 '''
 
-[[mods]]
-modId = "reeses_sodium_options"
-version = "1.0.4"
-displayName = "TexTrue's Rubidium Options (TexTrue's Embeddium Options)"
-description = '''
-Stub, to allow mods detecting TexTrue's Rubidium Options to function as expected.
-'''
+
 
 [[mixins]]
 config = "reeses-sodium-options.mixins.json"
@@ -40,3 +34,11 @@ mandatory = true
 versionRange = "*"
 ordering = "NONE"
 side = "CLIENT"
+
+[[mods]]
+modId = "reeses_sodium_options"
+version = "2.0.0"
+displayName = "TexTrue's Rubidium Options (TexTrue's Embeddium Options)"
+description = '''
+Stub, to allow mods detecting TexTrue's Rubidium Options to function as expected.
+'''
