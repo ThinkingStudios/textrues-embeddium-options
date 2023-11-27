@@ -24,7 +24,7 @@ repositories {
 
 dependencies {
     neoForge "net.neoforged:neoforge:${rootProject.neoforge_version}"
-    modImplementation "maven.modrinth:embeddium:0.2.9-git.a883fdf+mc1.20.2"
+    modImplementation "maven.modrinth:embeddium:${project.embeddium_version}-git.a883fdf+mc1.20.2"
 
     common(project(path: ":common", configuration: "namedElements")) { transitive false }
     shadowCommon(project(path: ":common", configuration: "transformProductionForge")) { transitive = false }
