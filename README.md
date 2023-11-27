@@ -1,6 +1,6 @@
 <center><div align="center">
 
-<img height="100" src="src/main/resources/icon.png" width="100"/>
+<img height="100" src="common/src/main/resources/icon.png" width="100"/>
 
 # TexTrue's Embeddium Options
 

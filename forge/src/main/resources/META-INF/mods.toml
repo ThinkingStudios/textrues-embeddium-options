@@ -1,0 +1,39 @@
+modLoader = "javafml"
+loaderVersion = "[46,)"
+license = "MIT"
+
+[[mods]]
+modId="textrues_embeddium_options"
+version="${version}"
+displayName="TexTrue's Embeddium Options"
+displayURL="https://github.com/ThinkingStudios/textrues-embeddium-options"
+logoFile= "icon.png"
+credits="FlashyReese"
+authors="TexTrue, TexTrueStudio"
+description='''
+Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge.
+
+Replaces Embeddium Options Screen.
+'''
+
+[[mods]]
+modId = "reeses_sodium_options"
+version = "1.0.4"
+displayName = "TexTrue's Rubidium Options (TexTrue's Embeddium Options)"
+description = '''
+Stub, to allow mods detecting TexTrue's Rubidium Options to function as expected.
+'''
+
+[[dependencies.textrues_embeddium_options]]
+modId = "forge"
+mandatory = true
+versionRange = "[46,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.textrues_embeddium_options]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.20,)"
+ordering = "NONE"
+side = "BOTH"
