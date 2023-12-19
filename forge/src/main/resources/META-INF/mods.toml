@@ -1,6 +1,6 @@
-modLoader = "javafml"
-loaderVersion = "[46,)"
-license = "MIT"
+modLoader="javafml"
+loaderVersion="[1,)"
+license="MIT"
 
 [[mods]]
 modId="textrues_embeddium_options"
@@ -16,24 +16,27 @@ Port of Reese's Sodium Options to work with Embeddium on MinecraftForge/NeoForge
 Replaces Embeddium Options Screen.
 '''
 
+[[mixins]]
+config = "reeses-sodium-options.mixins.json"
+
+[[dependencies.textrues_embeddium_options]]
+modId = "neoforge"
+mandatory = true
+versionRange = "[20,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.textrues_embeddium_options]]
+modId = "embeddium"
+mandatory = true
+versionRange = "*"
+ordering = "NONE"
+side = "CLIENT"
+
 [[mods]]
 modId = "reeses_sodium_options"
-version = "1.0.4"
+version = "2.0.0"
 displayName = "TexTrue's Rubidium Options (TexTrue's Embeddium Options)"
 description = '''
 Stub, to allow mods detecting TexTrue's Rubidium Options to function as expected.
 '''
-
-[[dependencies.textrues_embeddium_options]]
-modId = "forge"
-mandatory = true
-versionRange = "[46,)"
-ordering = "NONE"
-side = "BOTH"
-
-[[dependencies.textrues_embeddium_options]]
-modId = "minecraft"
-mandatory = true
-versionRange = "[1.20,)"
-ordering = "NONE"
-side = "BOTH"
