@@ -1,3 +1,2 @@
 ## Change
-- sync RSO 0.6.5
-- rework icon by @KrLite
+- Update Embeddium version to `0.3.0+mc1.20.1`
