@@ -1,2 +1,2 @@
 ## Change
-- Port to NeoForge 1.20.4
+- Update Embeddium version to `0.3.0+mc1.20.4`
