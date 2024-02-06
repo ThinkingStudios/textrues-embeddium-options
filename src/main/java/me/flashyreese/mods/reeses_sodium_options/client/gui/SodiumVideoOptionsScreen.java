@@ -75,7 +75,7 @@ public class SodiumVideoOptionsScreen extends Screen implements ScreenPromptable
         var options = SodiumClientMod.options();
 
         // If the user has disabled the nags forcefully (by config), or has already seen the prompt, don't show it again.
-        if (options.notifications.forceDisableDonationPrompts || options.notifications.hasSeenDonationPrompt) {
+        if (options.notifications.hasSeenDonationPrompt) {
             return;
         }
 
@@ -166,13 +166,13 @@ public class SodiumVideoOptionsScreen extends Screen implements ScreenPromptable
         this.donateButton = new FlatButtonWidget(donateButtonDim, donationText, this::openDonationPage);
         this.hideDonateButton = new FlatButtonWidget(hideDonateButtonDim, Text.literal("x"), this::hideDonationButton);
 
-        if (SodiumClientMod.options().notifications.hasClearedDonationButton || SodiumClientMod.options().notifications.forceDisableDonationPrompts) {
+        if (SodiumClientMod.options().notifications.hasClearedDonationButton) {
             this.setDonationButtonVisibility(false);
         }
 
 
         Dim2i searchTextFieldDim;
-        if (SodiumClientMod.options().notifications.hasClearedDonationButton || SodiumClientMod.options().notifications.forceDisableDonationPrompts) {
+        if (SodiumClientMod.options().notifications.hasClearedDonationButton) {
             searchTextFieldDim = new Dim2i(tabFrameDim.x(), tabFrameDim.y() - 26, tabFrameDim.width(), 20);
         } else {
             searchTextFieldDim = new Dim2i(tabFrameDim.x(), tabFrameDim.y() - 26, tabFrameDim.width() - (tabFrameDim.getLimitX() - donateButtonDim.x()) - 2, 20);
@@ -185,7 +185,7 @@ public class SodiumVideoOptionsScreen extends Screen implements ScreenPromptable
             //int size = this.client.textRenderer.getWidth(Text.translatable(IrisApi.getInstance().getMainScreenLanguageKey()));
             int size = this.client.textRenderer.getWidth(Text.translatable(IrisCompat.getIrisShaderPacksScreenLanguageKey()));
             Dim2i shaderPackButtonDim;
-            if (!(SodiumClientMod.options().notifications.hasClearedDonationButton || SodiumClientMod.options().notifications.forceDisableDonationPrompts)) {
+            if (!(SodiumClientMod.options().notifications.hasClearedDonationButton)) {
                 shaderPackButtonDim = new Dim2i(donateButtonDim.x() - 12 - size, tabFrameDim.y() - 26, 10 + size, 20);
             } else {
                 shaderPackButtonDim = new Dim2i(tabFrameDim.getLimitX() - size - 10, tabFrameDim.y() - 26, 10 + size, 20);
@@ -384,10 +384,10 @@ public class SodiumVideoOptionsScreen extends Screen implements ScreenPromptable
     static {
         DONATION_PROMPT_MESSAGE = List.of(
                 StringVisitable.concat(Text.literal("Hello!")),
-                StringVisitable.concat(Text.literal("It seems that you've been enjoying "), Text.literal("Sodium").withColor(0x27eb92), Text.literal(", the free and open-source optimization mod for Minecraft.")),
-                StringVisitable.concat(Text.literal("Mods like these are complex. They require "), Text.literal("thousands of hours").withColor(0xff6e00), Text.literal(" of development, debugging, and tuning to create the experience that players have come to expect.")),
+                StringVisitable.concat(Text.literal("It seems that you've been enjoying "), Text.literal("Embeddium").withColor(0x27eb92), Text.literal(", a port of Sodium for the Forge/NeoForge modloaders.")),
+                StringVisitable.concat(Text.literal("Embeddium like these are complex. They require "), Text.literal("thousands of hours").withColor(0xff6e00), Text.literal(" of development, debugging, and tuning to create the experience that players have come to expect.")),
                 StringVisitable.concat(Text.literal("If you'd like to show your token of appreciation, and support the development of our mod in the process, then consider "), Text.literal("buying us a coffee").withColor(0xed49ce), Text.literal(".")),
-                StringVisitable.concat(Text.literal("And thanks again for using our mod! We hope it helps you (and your computer.)"))
+                StringVisitable.concat(Text.literal("And thanks again for using the mod! We hope it helps you (and your computer.)"))
         );
     }
 }
