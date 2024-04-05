@@ -22,7 +22,7 @@ config = "reeses-sodium-options.mixins.json"
 [[dependencies.textrues_embeddium_options]]
 modId = "neoforge"
 type = "required"
-versionRange = "[20,)"
+versionRange = "[20.3,)"
 ordering = "NONE"
 side = "BOTH"
 
@@ -36,6 +36,6 @@ side = "BOTH"
 [[dependencies.textrues_embeddium_options]]
 modId = "embeddium"
 type = "required"
-versionRange = "[0.3.1,)"
+versionRange = "[0.3.10,)"
 ordering = "NONE"
 side = "BOTH"

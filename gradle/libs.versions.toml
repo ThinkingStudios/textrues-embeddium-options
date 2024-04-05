@@ -1,0 +1,28 @@
+[versions]
+maven-group = "org.thinkingstudio"
+archives-name = "textrues_embeddium_options"
+mod = "0.1.2"
+loader = "neoforge"
+
+minecraft = "1.20.4"
+yarn = "1.20.4+build.3"
+neoforge = "20.4.221"
+architectury-loom = "1.5-SNAPSHOT"
+modpublisher = "2.+"
+
+embeddium = "0.3.11+mc1.20.4"
+
+# project-id
+id-modrinth = "S1tndFDa"
+id-curseforge = "910506"
+
+[libraries]
+minecraft = { group = "com.mojang", name = "minecraft", version.ref = "minecraft" }
+yarn = { group = "net.fabricmc", name = "yarn", version.ref = "yarn" }
+neoforge = { group = "net.neoforged", name = "neoforge", version.ref = "neoforge" }
+
+embeddium = { group = "maven.modrinth", name = "embeddium", version.ref = "embeddium" }
+
+[plugins]
+architectury-loom = { id = "dev.architectury.loom", version.ref = "architectury-loom" }
+modpublisher = { id = "com.hypherionmc.modutils.modpublisher", version.ref = "modpublisher" }
