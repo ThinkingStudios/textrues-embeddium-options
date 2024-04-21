@@ -9,6 +9,10 @@ public class TexTruesEmbeddiumOptions {
     public static final String MODID = "textrues_embeddium_options";
 
     public TexTruesEmbeddiumOptions() {
-        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> new IExtensionPoint.DisplayTest(() -> IExtensionPoint.DisplayTest.IGNORESERVERONLY, (a, b) -> true));
+        ModLoadingContext.get().registerExtensionPoint(IExtensionPoint.DisplayTest.class, () -> {
+            return new IExtensionPoint.DisplayTest(() -> {
+                return IExtensionPoint.DisplayTest.IGNORESERVERONLY;
+            }, (a, b) -> true);
+        });
     }
 }
