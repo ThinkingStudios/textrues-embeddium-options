@@ -1,3 +1,7 @@
+> [!WARNING]
+> **Embeddium has merged RSO**, which means that you don't need to install TEO to use the similar video options screen.
+> This mod has been archived. (See: https://github.com/ThinkingStudios/textrues-embeddium-options/issues/9)
+
 <center><div align="center">
 
 <img height="100" src="src/main/resources/icon.png" width="100"/>
